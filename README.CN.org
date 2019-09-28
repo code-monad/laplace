@@ -1,0 +1,29 @@
+#+title: Laplace
+#+author: Code Monad
+#+email: code@lab-11.org
+#+date: <2019-09-24 Tue>
+
+
+#+BEGIN_QUOTE
+ 對於這位智者來說,
+ 沒有任何事物會是含糊的,
+ 並且未來只會像過去般出現在他眼前.
+
+    ---Pierre Simon Laplace
+#+END_QUOTE
+
+** 你在说个啥?
+
++别太管上头那个装b引言.+ *Laplace* /[ləˈplɑs]/ (中文:拉普拉斯)将提供 *一套便捷的工具/API* 用来创建可观的网络服务(当然,目前还有很大一部分是特供给[[https://cqhttp.cc/][CoolQ HTTP]]的).
+
+** Requirements
+
+   你将需要[[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann JSON]], [[https://cmake.org/][CMake]] 来构建这个repo.推荐在*nix系机器上使用,任何 *Windows* 下的编译问题请自行解决.
+
+** 协议
+
+Laplace 使用[[file:LICENSE][GPLv3 License]]发布/分发. 你可以阅读根目录下的 =LICENSE= 文件来查看相关内容.
+
+- Copyright (c) 2019 Code Monad
+     
+  All rights reserved.

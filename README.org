@@ -1,0 +1,32 @@
+#+title: Laplace
+#+author: Code Monad
+#+email: code@lab-11.org
+#+date: <2019-09-24 Tue>
+
+
+中文用户请转至[[file:README.CN.org][中文说明文档]]
+
+#+BEGIN_QUOTE
+ ...For such an intellect 
+ nothing would be uncertain
+ and the future just like the past
+ would be present before its eyes.
+
+    ---Pierre Simon Laplace
+#+END_QUOTE
+
+** Wait...What?
+
+   Well, Let's forget about the quote. Laplace is a +DEMON CREATOR+ *set of utilities, APIs* for helping you create admirable web services(Currently specialized against the [[https://cqhttp.cc/][CoolQ HTTP Protocol]]).
+
+** Requirements
+
+   Currently you'll need [[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann's JSON library]], [[https://cmake.org/][CMake]] to build this repo.
+
+** Licensing
+
+   Laplace is licensed under the terms of the [[file:LICENSE][GPLv3 License]]. Please check the =LICENSE= file under the repo's root dir.
+
+   - Copyright (c) 2019 Code Monad
+
+   All rights reserved.
