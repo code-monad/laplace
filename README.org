@@ -17,7 +17,7 @@
 
 ** Wait...What?
 
-   Well, Let's forget about the quote. Laplace is a +DEMON CREATOR+ *set of utilities, APIs* for helping you create admirable web services(Currently specialized against the [[https://cqhttp.cc/][CoolQ HTTP Protocol]]).
+   Well, Let's forget about the quote. Laplace is a +DEMON CREATOR+ *set of utilities, APIs* for helping you create admirable web services.
 
 ** How To Use
 
