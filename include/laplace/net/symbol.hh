@@ -37,6 +37,18 @@ template <> constexpr const wchar_t basic_colon<wchar_t>() noexcept { return L':
 constexpr const char colon = basic_colon<char>();
 constexpr const wchar_t wcolon = basic_colon<wchar_t>();
 
+// The @ symblo, for template
+template <typename _Char_T, class _Traits_T = std::char_traits<_Char_T>>
+constexpr const _Char_T basic_at() noexcept {}
+
+template <> constexpr const char basic_at<char>() noexcept { return '@'; }
+
+template <> constexpr const wchar_t basic_at<wchar_t>() noexcept { return L'@'; }
+
+// covinience alias
+constexpr const char at = basic_at<char>();
+constexpr const wchar_t wat = basic_at<wchar_t>();
+
 // The slash symblo, for template
 template <typename _Char_T, class _Traits_T = std::char_traits<_Char_T>>
 constexpr const _Char_T basic_slash() noexcept {}

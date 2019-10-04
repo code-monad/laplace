@@ -22,14 +22,15 @@
 #include <sstream>
 #include <stdexcept>
 
-invalid_uri::invalid_uri(const std::string& what_arg)
+laplace::net::exception::exception() {}
+
+laplace::net::invalid_uri::invalid_uri(const std::string& what_arg)
     : std::invalid_argument(what_arg) {}
 
-invalid_uri::invalid_uri(const char* what_arg)
-    : std::invalid_argument(what_arg) {}
+laplace::net::invalid_uri::invalid_uri(const char* what_arg) : std::invalid_argument(what_arg) {}
 
-const char* invalid_uri::what() const noexcept {
+const char* laplace::net::invalid_uri::what() const noexcept {
   std::ostringstream ss;
   ss << _what << " is not a valid uri";
-  return ss.str();
+  return std::move(ss.str().c_str());
 }

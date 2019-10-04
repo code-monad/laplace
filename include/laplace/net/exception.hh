@@ -17,17 +17,27 @@
 // You should have received a copy of the GNU General Public License
 // along with Laplace.  If not, see <https://www.gnu.org/licenses/>.
 // ------------------------------------------------------------------
+#ifndef __LAPLACE_NET_EXCEPTION_HH__
+#define __LAPLACE_NET_EXCEPTION_HH__
 
 #include <stdexcept>
 #include <string_view>
 
 namespace laplace {
 namespace net {
-class invalid_uri : public std::invalid_argument {
+class exception : public std::exception {
+public:
+  exception();
+  virtual const char* what() const noexcept = 0;
+  virtual ~exception() = default;
+};
+
+class invalid_uri : public laplace::net::exception, public std::invalid_argument {
 public:
   explicit invalid_uri(const std::string& what_arg);
   explicit invalid_uri(const char* what_arg);
   const char* what() const noexcept;
+  ~invalid_uri() = default;
 
 private:
   std::string_view _what;
@@ -35,3 +45,5 @@ private:
 
 } // namespace net
 } // namespace laplace
+
+#endif // __LAPLACE_NET_EXCEPTION_HH__
