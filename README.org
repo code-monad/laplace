@@ -19,10 +19,22 @@
 
    Well, Let's forget about the quote. Laplace is a +DEMON CREATOR+ *set of utilities, APIs* for helping you create admirable web services(Currently specialized against the [[https://cqhttp.cc/][CoolQ HTTP Protocol]]).
 
-** Requirements
+** How To Use
 
-   Currently you'll need [[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann's JSON library]], [[https://cmake.org/][CMake]] to build this repo.
+In order to use Laplace, you'll need to build it first.
 
+*** Building
+
+#+BEGIN_SRC shell
+mkdir build; # Making a dir holding all materials
+cd build;
+cmake .. && make -j4;
+#+END_SRC
+
+**** Requirements
+
+Currently you'll need [[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann's JSON library]], [[https://cmake.org/][CMake]] to build this repo.
+   
 ** Licensing
 
    Laplace is licensed under the terms of the [[file:LICENSE][GPLv3 License]]. Please check the =LICENSE= file under the repo's root dir.

@@ -16,10 +16,22 @@
 
 +别太管上头那个装b引言.+ *Laplace* /[ləˈplɑs]/ (中文:拉普拉斯)将提供 *一套便捷的工具/API* 用来创建可观的网络服务(当然,目前还有很大一部分是特供给[[https://cqhttp.cc/][CoolQ HTTP]]的).
 
-** Requirements
+** 使用指南
 
-   你将需要[[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann JSON]], [[https://cmake.org/][CMake]] 来构建这个repo.推荐在*nix系机器上使用,任何 *Windows* 下的编译问题请自行解决.
+首先,你需要先构建Laplace:
 
+*** Build
+
+#+BEGIN_SRC shell
+mkdir build; # 所有Unit Test和lib都会在这
+cd build;
+cmake .. && make -j4;
+#+END_SRC
+
+*** 依赖
+
+当前,你将需要 [[https://www.boost.org][Boost(>=1.7)]], [[https://github.com/nlohmann/json][Nlohmann's JSON library]], [[https://cmake.org/][CMake]].
+   
 ** 协议
 
 Laplace 使用[[file:LICENSE][GPLv3 License]]发布/分发. 你可以阅读根目录下的 =LICENSE= 文件来查看相关内容.
