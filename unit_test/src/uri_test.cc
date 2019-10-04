@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace laplace;
 
-TEST_CASE("URI Unite Test", "[uri]") {
+TEST_CASE("URI Unit Test", "[uri]") {
   REQUIRE(net::symbol::basic_slash<char>() == '/');        // the slash
   REQUIRE(net::symbol::basic_slash<wchar_t>() == L'/');    // the wide slash
   REQUIRE(net::symbol::basic_at<char>() == '@');           // the @
@@ -44,6 +44,9 @@ TEST_CASE("URI Unite Test", "[uri]") {
   REQUIRE(http.target() == "/api/v2/call");
   REQUIRE(http.query() == "param=count&test=true");
   REQUIRE(http.fragment() == "h1");
+  auto target_seq = http.target_seq();
+  std::vector<std::string_view> cmp_seq = {"api", "v2", "call"};
+  REQUIRE(std::equal(target_seq.begin(), target_seq.end(), cmp_seq.begin(), cmp_seq.end()));
 
   std::string request = "http:://me@example.com/api/v3/call?param=123#top";
   auto start = std::chrono::high_resolution_clock::now();
@@ -51,5 +54,6 @@ TEST_CASE("URI Unite Test", "[uri]") {
   auto end = std::chrono::high_resolution_clock::now();
   std::chrono::nanoseconds elapsed =
       std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-  std::cout << "Parse " << request << " cost " << elapsed.count() << "ns." << std::endl;
+  UNSCOPED_INFO("Parse " << request << " cost " << elapsed.count() << "ns.");
+  CHECK(true);
 }

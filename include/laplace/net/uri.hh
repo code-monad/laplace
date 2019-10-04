@@ -22,6 +22,7 @@
 #define __LAPLACE_URI_HH__
 
 #include <algorithm>
+#include <boost/algorithm/string.hpp>
 #include <boost/beast/core.hpp>
 #include <laplace/core/string.hh>
 #include <laplace/net/exception.hh>
@@ -38,10 +39,10 @@ template <typename _Char_T, class _Traits_T = std::char_traits<_Char_T>>
 laplace::string::view_range_t
 parse_sequence(std::basic_string_view<_Char_T, _Traits_T>& content, _Char_T letter,
                std::size_t pos = 0, const bool reverse_search = false,
-               const bool skip_lead_slash = false,
-               const bool allow_optional = false, // letter could be optional
-               const bool throw_not_found = false) {
-  // skip the leading slash
+               const bool skip_lead_slash = false, // skip the leading slash
+               const bool allow_optional = false,  // letter could be optional
+               const bool throw_not_found = false  // throw an exception if not matched
+) {
   if (skip_lead_slash) {
     while (content.at(pos) == symbol::basic_slash<_Char_T>()) {
       pos++;
@@ -57,7 +58,7 @@ parse_sequence(std::basic_string_view<_Char_T, _Traits_T>& content, _Char_T lett
     return std::make_pair(offset, letter_index);
   }
   if (throw_not_found)
-    throw net::invalid_uri(std::string(__PRETTY_FUNCTION__) + "can not detect any scheme");
+    throw net::invalid_uri(std::string(__PRETTY_FUNCTION__) + " not a valid uri");
   if (allow_optional)
     return std::make_pair(pos, content.size());
   return std::make_pair(std::basic_string_view<_Char_T, _Traits_T>::npos,
@@ -135,6 +136,20 @@ public:
   string_view_type host() const noexcept { return _host; }
 
   string_view_type target() const noexcept { return _target; }
+
+  std::vector<string_view_type> target_seq() const {
+    std::basic_string_view<_Char_T, _Traits_T> target_cmp = _target;
+    std::vector<string_view_type> result;
+    for (std::size_t pos = 0; pos != string_view_type::npos && pos < _target.size();) {
+      auto next =
+          parse_sequence(target_cmp, symbol::basic_slash<_Char_T>(), pos, false, true, true);
+      pos += 1;
+      result.push_back(_target.substr(pos, next.second - pos));
+      pos = next.second;
+    }
+
+    return result;
+  }
 
   string_view_type query() const noexcept { return _query; }
 
